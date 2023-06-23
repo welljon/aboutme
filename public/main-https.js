@@ -13,9 +13,9 @@ const credentials = {
 const httpsServer = https.createServer(credentials, app);
 const io = new Server();
 io.attach(httpsServer);
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(__dirname, 'build'));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile('index.html');
 });
 io.on('connection', (socket) => {
   console.log('a user connected');
